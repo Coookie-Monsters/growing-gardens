@@ -10,7 +10,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "AWS_PROFILE=growing-gardens aws s3 sync build/ s3://growing-gardens",
+    "deploy": "aws s3 sync build/ s3://growing-gardens",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
