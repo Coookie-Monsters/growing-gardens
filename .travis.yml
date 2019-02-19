@@ -15,5 +15,5 @@ install:
   - npm install
 
 script:
-  - npm build
-  - npm deploy
+  - npm run-script build
+  - npm run-script deploy
