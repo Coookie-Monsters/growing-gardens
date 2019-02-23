@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.jpg';
 import './App.css';
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Login from './components/Login';
 
 class App extends Component {
   render() {
@@ -17,6 +22,7 @@ class App extends Component {
             <br />
             Growing Gardens
           </a>
+          <Login />
         </header>
       </div>
     );
