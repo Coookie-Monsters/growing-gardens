@@ -3,14 +3,16 @@
 ### 1. Install VSCode
 Install from [here](https://code.visualstudio.com/).
 
-Install these plugins:
+Install these extensions:
 - Prettier
 - ESLint
 
+To install an extension, go to Code -> Preferences -> Extensions, then search for and install your extension.
+
 ### 2. Clone this repo from git
 
-Open up your terminal.
-Run `git clone https://github.com/Coookie-Monsters/growing-gardens.git`
+- Open up your terminal.
+- Run `git clone https://github.com/Coookie-Monsters/growing-gardens.git`
 
 ### 3. Install dependencies
 
