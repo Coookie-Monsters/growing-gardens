@@ -6,6 +6,7 @@ import {
   CardContent,
   Grid
 } from '@material-ui/core';
+import { NavLink } from 'react-router-dom';
 
 class Landing extends Component {
   render() {
@@ -25,10 +26,12 @@ class Landing extends Component {
               </CardContent>
 
               <CardActions>
-                <Button size="small" color="primary">
-                  Give
-                </Button>
-                <Button size="small" color="primary">
+                <NavLink to="/give">
+                  <Button size="medium" color="primary">
+                    Give
+                  </Button>
+                </NavLink>
+                <Button size="medium" color="primary">
                   Learn More
                 </Button>
               </CardActions>
@@ -38,17 +41,20 @@ class Landing extends Component {
             <Card>
               <CardContent>
                 <h1>Accept/Acceptar</h1>
-                Checkmate... God help us, we're in the hands of engineers. I was
-                part of something special. Life finds a way. Eventually, you do
-                plan to have dinosaurs on your dinosaur tour, right? Eventually,
-                you do plan to have dinosaurs on your dinosaur tour, right?
+                Lorem ipsum dolor amet food truck yuccie swag mumblecore franzen
+                selfies ugh, fanny pack quinoa. Vexillologist hexagon drinking
+                vinegar, kale chips hell of pok pok wolf sriracha vinyl
+                cornhole. Vexillologist VHS unicorn ramps, umami church-key
+                everyday carry PBR&B chillwave plaid pabst freegan.
               </CardContent>
 
               <CardActions>
-                <Button size="small" color="primary">
-                  Accept
-                </Button>
-                <Button size="small" color="primary">
+                <NavLink to="/accept">
+                  <Button size="medium" color="primary">
+                    Accept
+                  </Button>
+                </NavLink>
+                <Button size="medium" color="primary">
                   Learn More
                 </Button>
               </CardActions>

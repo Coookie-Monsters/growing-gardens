@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
-import logo from './logo.jpg';
 import './App.css';
-import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
-import FormControl from '@material-ui/core/FormControl';
-import Landing from './components/Landing';
+import Landing from './components/routes/Landing';
+import Login from './components/routes/Login';
+import Give from './components/routes/Give';
+import Accept from './components/routes/Accept';
+import { Route, HashRouter } from 'react-router-dom';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Landing />
-      </div>
+      <HashRouter>
+        <div className="App">
+          <Route exact path="/" component={Landing} />
+          <Route path="/login" component={Login} />
+          <Route path="/give" component={Give} />
+          <Route path="/accept" component={Accept} />
+        </div>
+      </HashRouter>
     );
   }
 }
