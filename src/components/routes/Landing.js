@@ -7,17 +7,18 @@ import {
   Grid
 } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
+import logo from '../../logo.jpg';
 
 class Landing extends Component {
   render() {
     return (
       <div>
-        <h1>Growing Gardens</h1>
+        <img src={logo} className="App-logo" alt="logo" />
         <Grid container spacing={16}>
           <Grid item sm container>
             <Card>
               <CardContent>
-                <h1>Give/Dar</h1>
+                <h2>Give/Dar</h2>
                 Lorem ipsum dolor amet food truck yuccie swag mumblecore franzen
                 selfies ugh, fanny pack quinoa. Vexillologist hexagon drinking
                 vinegar, kale chips hell of pok pok wolf sriracha vinyl
@@ -40,7 +41,7 @@ class Landing extends Component {
           <Grid item sm container>
             <Card>
               <CardContent>
-                <h1>Accept/Acceptar</h1>
+                <h2>Accept/Acceptar</h2>
                 Lorem ipsum dolor amet food truck yuccie swag mumblecore franzen
                 selfies ugh, fanny pack quinoa. Vexillologist hexagon drinking
                 vinegar, kale chips hell of pok pok wolf sriracha vinyl
