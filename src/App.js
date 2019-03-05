@@ -1,23 +1,64 @@
 import React, { Component } from 'react';
 import './App.css';
 import Landing from './components/routes/Landing';
-import Login from './components/routes/Login';
 import Give from './components/routes/Give';
 import Accept from './components/routes/Accept';
 import { Route, HashRouter } from 'react-router-dom';
+import { auth, provider } from './firebase.js';
+import { Button } from '@material-ui/core';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      username: '',
+      user: null
+    };
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+  }
+  login() {
+    auth.signInWithPopup(provider).then(result => {
+      const user = result.user;
+      this.setState({
+        user
+      });
+    });
+  }
+  logout() {
+    auth.signOut().then(() => {
+      this.setState({
+        user: null
+      });
+    });
+  }
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ user });
+      }
+    });
+  }
   render() {
-    return (
-      <HashRouter>
-        <div className="App">
-          <Route exact path="/" component={Landing} />
-          <Route path="/login" component={Login} />
-          <Route path="/give" component={Give} />
-          <Route path="/accept" component={Accept} />
+    if (this.state.user) {
+      return (
+        <HashRouter>
+          <div className="app">
+            <Button onClick={this.logout}>Log Out</Button>
+            <Route exact path="/" component={Landing} />
+            <Route path="/give" component={Give} />
+            <Route path="/accept" component={Accept} />
+          </div>
+        </HashRouter>
+      );
+    } else {
+      return (
+        <div className="app">
+          <h1>Please login</h1>
+          <Button onClick={this.login}>Log In</Button>
         </div>
-      </HashRouter>
-    );
+      );
+    }
   }
 }
 
