@@ -1,4 +1,4 @@
-Live demo: https://growing-gardens.s3-us-west-2.amazonaws.com
+Live demo: https://growing-gardens.s3-us-west-2.amazonaws.com/index.html#/
 
 ## Developing locally
 
