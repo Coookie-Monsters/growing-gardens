@@ -3,10 +3,12 @@ service: growing-gardens
 frameworkVersion: '>=1.2.0 <2.0.0'
 
 plugins:
-  - serverless-single-page-app-plugin
+  - serverless-finch
 
 custom:
-  s3Bucket: growing-gardens
+  client:
+    bucketName: growing-gardens
+    distributionFolder: build
 
 provider:
   name: aws
@@ -15,33 +17,28 @@ provider:
 
 resources:
   Resources:
-    WebAppS3Bucket:
+    s3Bucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: ${self:custom.s3Bucket}
+        BucketName: ${self:custom.client.bucketName}
         AccessControl: PublicRead
         WebsiteConfiguration:
           IndexDocument: index.html
           ErrorDocument: index.html
-    WebAppS3BucketPolicy:
-      Type: AWS::S3::BucketPolicy
-      Properties:
-        Bucket:
-          Ref: WebAppS3Bucket
-        PolicyDocument:
-          Statement:
-            - Sid: PublicReadGetObject
-              Effect: Allow
-              Principal: '*'
-              Action:
-                - s3:GetObject
-              Resource: arn:aws:s3:::${self:custom.s3Bucket}/*
+        CorsConfiguration:
+          CorsRules:
+            - AllowedMethods:
+                - GET
+              AllowedOrigins:
+                - '*'
+              AllowedHeaders:
+                - '*'
     WebAppCloudFrontDistribution:
       Type: AWS::CloudFront::Distribution
       Properties:
         DistributionConfig:
           Origins:
-            - DomainName: ${self:custom.s3Bucket}.s3.amazonaws.com
+            - DomainName: ${self:custom.client.bucketName}.s3.amazonaws.com
               Id: WebApp
               CustomOriginConfig:
                 HTTPPort: 80
@@ -71,7 +68,7 @@ resources:
           ViewerCertificate:
             CloudFrontDefaultCertificate: 'true'
 
-  Outputs:
-    WebAppCloudFrontDistributionOutput:
-      Value:
-        'Fn::GetAtt': [WebAppCloudFrontDistribution, DomainName]
+Outputs:
+  WebAppCloudFrontDistributionOutput:
+    Value:
+      'Fn::GetAtt': [WebAppCloudFrontDistribution, DomainName]
