@@ -1,4 +1,4 @@
-Live demo: https://dmq6ulmi3n5oa.cloudfront.net
+Live demo: https://growing-gardens.s3-us-west-2.amazonaws.com
 
 ## Developing locally
 
