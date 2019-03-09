@@ -7,14 +7,13 @@ import {
   Grid
 } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
-import logo from '../static/logo.jpg';
+import './Landing.css';
 
 class Landing extends Component {
   render() {
     return (
-      <div>
-        <img src={logo} className="App-logo" alt="logo" />
-        <Grid container spacing={16}>
+      <div className="main landing-page">
+        <Grid container spacing={16} className="give">
           <Grid item sm container>
             <Card>
               <CardContent>

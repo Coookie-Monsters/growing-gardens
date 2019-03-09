@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Landing from '../../routes/Landing';
+import Landing from '../Landing/Landing';
 import Give from '../../routes/Give';
 import Accept from '../../routes/Accept';
 import { Route, HashRouter } from 'react-router-dom';
@@ -45,7 +45,7 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <HashRouter>
-          <div className="app">
+          <div className="app main">
             <MenuBar />
             {this.getContent()}
           </div>
