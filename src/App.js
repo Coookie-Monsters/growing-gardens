@@ -6,6 +6,7 @@ import Accept from './components/routes/Accept';
 import { Route, HashRouter } from 'react-router-dom';
 import { auth } from './firebase.js';
 import MenuBar from './components/MenuBar';
+import { Typography } from '@material-ui/core';
 
 class App extends Component {
   constructor() {
@@ -36,7 +37,9 @@ class App extends Component {
       return (
         <div className="app">
           <MenuBar />
-          <h1>Please log in</h1>
+          <Typography variant="h3" color="inherit">
+            Please log in
+          </Typography>
         </div>
       );
     }
