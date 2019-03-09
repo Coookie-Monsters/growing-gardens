@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { auth, provider } from '../firebase.js';
 import { Button, AppBar, Typography, Toolbar } from '@material-ui/core';
-import { MuiThemeProvider, withStyles } from '@material-ui/core/styles';
-import { HashRouter, Link } from 'react-router-dom';
-import theme from '../theme';
+import { withStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 
 const styles = {
   grow: {
@@ -63,20 +62,16 @@ class MenuBar extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <HashRouter>
-        <MuiThemeProvider theme={theme}>
-          <AppBar position="static">
-            <Toolbar>
-              <Typography variant="h6" color="inherit" className={classes.grow}>
-                <Link to="/" className={classes.headerLink}>
-                  Growing Gardens
-                </Link>
-              </Typography>
-              {this.getLoginButton()}
-            </Toolbar>
-          </AppBar>
-        </MuiThemeProvider>
-      </HashRouter>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" color="inherit" className={classes.grow}>
+            <Link to="/" className={classes.headerLink}>
+              Growing Gardens
+            </Link>
+          </Typography>
+          {this.getLoginButton()}
+        </Toolbar>
+      </AppBar>
     );
   }
 }
