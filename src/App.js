@@ -4,8 +4,9 @@ import Landing from './components/routes/Landing';
 import Give from './components/routes/Give';
 import Accept from './components/routes/Accept';
 import { Route, HashRouter } from 'react-router-dom';
-import { auth, provider } from './firebase.js';
-import { Button } from '@material-ui/core';
+import { auth } from './firebase.js';
+import MenuBar from './components/MenuBar';
+import { Typography } from '@material-ui/core';
 
 class App extends Component {
   constructor() {
@@ -14,29 +15,10 @@ class App extends Component {
       username: '',
       user: null
     };
-    this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
-  }
-  login() {
-    auth.signInWithPopup(provider).then(result => {
-      const user = result.user;
-      this.setState({
-        user
-      });
-    });
-  }
-  logout() {
-    auth.signOut().then(() => {
-      this.setState({
-        user: null
-      });
-    });
   }
   componentDidMount() {
     auth.onAuthStateChanged(user => {
-      if (user) {
-        this.setState({ user });
-      }
+      this.setState({ user: user });
     });
   }
   render() {
@@ -44,7 +26,7 @@ class App extends Component {
       return (
         <HashRouter>
           <div className="app">
-            <Button onClick={this.logout}>Log Out</Button>
+            <MenuBar />
             <Route exact path="/" component={Landing} />
             <Route path="/give" component={Give} />
             <Route path="/accept" component={Accept} />
@@ -54,8 +36,10 @@ class App extends Component {
     } else {
       return (
         <div className="app">
-          <h1>Please login</h1>
-          <Button onClick={this.login}>Log In</Button>
+          <MenuBar />
+          <Typography variant="h3" color="inherit">
+            Please log in
+          </Typography>
         </div>
       );
     }
