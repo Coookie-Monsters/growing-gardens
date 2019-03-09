@@ -5,7 +5,7 @@ import Give from './components/routes/Give';
 import Accept from './components/routes/Accept';
 import { Route, HashRouter } from 'react-router-dom';
 import { auth, provider } from './firebase.js';
-import { Button } from '@material-ui/core';
+import { Button, AppBar, Backdrop } from '@material-ui/core';
 
 class App extends Component {
   constructor() {
@@ -44,6 +44,9 @@ class App extends Component {
       return (
         <HashRouter>
           <div className="app">
+            <AppBar>
+              <h1>Growing Gardens</h1>
+            </AppBar>
             <Button onClick={this.logout}>Log Out</Button>
             <Route exact path="/" component={Landing} />
             <Route path="/give" component={Give} />
@@ -54,8 +57,18 @@ class App extends Component {
     } else {
       return (
         <div className="app">
-          <h1>Please login</h1>
-          <Button onClick={this.login}>Log In</Button>
+          <AppBar>
+            <h1>Growing Gardens</h1>
+          </AppBar>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <h1>Please log in</h1>
+          <Button onClick={this.login} color="primary">
+            Log In
+          </Button>
         </div>
       );
     }
