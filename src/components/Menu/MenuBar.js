@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { auth, provider } from '../firebase.js';
+import { auth, provider } from '../../firebase';
 import { Button, AppBar, Typography, Toolbar } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';

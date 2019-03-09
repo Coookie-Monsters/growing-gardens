@@ -3,9 +3,11 @@ Live demo: https://growing-gardens.s3-us-west-2.amazonaws.com/index.html#/
 ## Developing locally
 
 ### 1. Install VSCode
+
 Install from [here](https://code.visualstudio.com/).
 
 Install these extensions:
+
 - Prettier
 - ESLint
 
@@ -23,4 +25,4 @@ From the directory where you cloned the project, in a terminal, run
 
 ### 4. Start the project
 
-Run `npm run start` to start a server for your code that will compile it and render it in your browser.
+Run `yarn start` to start a server for your code that will compile it and render it in your browser.

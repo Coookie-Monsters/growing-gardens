@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import './App.css';
-import Landing from './components/routes/Landing';
-import Give from './components/routes/Give';
-import Accept from './components/routes/Accept';
+import Landing from '../../routes/Landing';
+import Give from '../../routes/Give';
+import Accept from '../../routes/Accept';
 import { Route, HashRouter } from 'react-router-dom';
-import { auth } from './firebase.js';
-import MenuBar from './components/MenuBar';
+import { auth } from '../../firebase.js';
+import MenuBar from '../Menu/MenuBar';
 import { Typography } from '@material-ui/core';
 import { MuiThemeProvider } from '@material-ui/core/styles';
-import theme from './theme';
+import theme from '../../styles/theme';
+import './App.css';
 
 class App extends Component {
   constructor() {
