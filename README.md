@@ -2,25 +2,31 @@ Live demo: https://growing-gardens.s3-us-west-2.amazonaws.com/index.html#/
 
 ## Developing locally
 
-### 1. Install VSCode
+### Install VSCode
+
 Install from [here](https://code.visualstudio.com/).
 
 Install these extensions:
+
 - Prettier
 - ESLint
 
 To install an extension, go to Code -> Preferences -> Extensions, then search for and install your extension.
 
-### 2. Clone this repo from git
+### Clone this repo from git
 
 - Open up your terminal.
 - Run `git clone https://github.com/Coookie-Monsters/growing-gardens.git`
 
-### 3. Install dependencies
+### Install dependencies
 
 From the directory where you cloned the project, in a terminal, run
 `yarn install`
 
-### 4. Start the project
+### Start the project
 
-Run `npm run start` to start a server for your code that will compile it and render it in your browser.
+Run `yarn start` to start a server for your code that will compile it and render it in your browser.
+
+## Test
+
+Run `yarn test` to run unit tests.

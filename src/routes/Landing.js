@@ -7,7 +7,7 @@ import {
   Grid
 } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
-import logo from '../../logo.jpg';
+import logo from '../static/logo.jpg';
 
 class Landing extends Component {
   render() {
