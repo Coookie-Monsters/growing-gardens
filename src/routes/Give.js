@@ -7,7 +7,8 @@ class Give extends Component {
     super();
     this.state = {
       description: '',
-      user: null
+      user: null,
+      donations: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -15,6 +16,21 @@ class Give extends Component {
   componentDidMount() {
     auth.onAuthStateChanged(user => {
       this.setState({ user: user });
+    });
+    const donationsRef = firebase.database().ref('donations');
+    donationsRef.on('value', snapshot => {
+      let donations = snapshot.val();
+      let newState = [];
+      for (let donation in donations) {
+        newState.push({
+          id: donation,
+          description: donations[donation].description,
+          user: donations[donation].user
+        });
+      }
+      this.setState({
+        donations: newState
+      });
     });
   }
   handleSubmit(e) {
@@ -34,11 +50,15 @@ class Give extends Component {
       [e.target.name]: e.target.value
     });
   }
+  removeDonation(donationId) {
+    const donationRef = firebase.database().ref(`/donations/${donationId}`);
+    donationRef.remove();
+  }
   render() {
     return (
-      <div>
+      <div className="give-page">
         <form>
-          <Typography variant="h6" color="inherit">
+          <Typography variant="h3" color="inherit">
             Give
           </Typography>
           <TextField
@@ -51,10 +71,34 @@ class Give extends Component {
             name="description"
             onChange={this.handleChange}
           />
+          <br />
           <Button color="primary" onClick={this.handleSubmit}>
             Submit
           </Button>
         </form>
+        <Typography variant="h6" color="inherit">
+          Your Donations
+        </Typography>
+        <ul>
+          {this.state.donations.map(donation => {
+            return (
+              <li key={donation.id}>
+                <p>
+                  {donation.description}
+                  {donation.user === this.state.user.displayName ||
+                  donation.user === this.state.user.email ? (
+                    <Button
+                      color="primary"
+                      onClick={() => this.removeDonation(donation.id)}
+                    >
+                      Remove
+                    </Button>
+                  ) : null}
+                </p>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     );
   }
